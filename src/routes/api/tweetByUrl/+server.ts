@@ -1,7 +1,6 @@
-import { re, makeAPIUrl, type TweetId, type Tweet } from "$lib/twitter";
-import { json } from "@sveltejs/kit";
+import { re, type TweetId } from "$lib/twitter";
+import { error } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
-import { BEARER_TOKEN } from "$env/static/private";
 
 type Payload = {
     tweetUrl?: string
@@ -10,7 +9,7 @@ type Payload = {
 const parseUrl = (tweetUrl: URL): TweetId | Response => {
     const matches = re.exec(tweetUrl.pathname);
     if (!matches?.groups) {
-        return json({ "error": "couldn't find a tweet id on the url" }, { status: 400 });
+        throw error(400, "couldn't find a tweet id on the url");
     }
 
     const { id } = matches.groups;
@@ -20,21 +19,18 @@ const parseUrl = (tweetUrl: URL): TweetId | Response => {
 const parseRequest = async (request: Request) => {
     const { tweetUrl }: Payload = await request.json();
     if (!tweetUrl) {
-        return json({ "error": "invalid tweet url" }, { status: 400 })
+        throw error(400, "invalid tweet url")
     }
     try {
         const userUrl = new URL(tweetUrl);
         return parseUrl(userUrl);
     } catch (e) {
-        return json({ "error": (e as Error).message }, { status: 400 })
+        throw error(400, (e as Error).message)
     }
 }
 
 export const POST: RequestHandler = async ({ fetch, request }) => {
     const result = await parseRequest(request);
-    if (result instanceof Response) {
-        return result;
-    }
 
     return await fetch("/api/tweetById", {
         method: "POST",
