@@ -23,6 +23,8 @@
 <svelte:head>
     {#if username && text}
         <title>@{username} - {text?.substring(0, 10)}...</title>
+    {:else}
+        <title>Twitter video downloader!</title>
     {/if}
     <!-- Open Graph data -->
     <meta name="og:description" content="Download twitter videos with ease!" />
