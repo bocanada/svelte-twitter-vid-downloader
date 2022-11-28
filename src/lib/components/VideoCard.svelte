@@ -11,7 +11,7 @@
 <article>
     <header>
         <details role="list">
-            <summary aria-haspopup="listbox"> Download bitrates </summary>
+            <summary aria-haspopup="listbox">Bitrates</summary>
             <ul role="listbox">
                 {#each media.variants as variant}
                     {#if variant.bit_rate}
