@@ -15,12 +15,13 @@
 <svelte:head>
     <title>@{username} - {text.substring(0, 10)}...</title>
     <meta name="description" content={text} />
+
     <!-- Twitter Card Data -->
+    <meta name="twitter:card" content="summary_large_image" />
     <meta
         name="twitter:title"
         content="@{username} - {text.substring(0, 10)}"
     />
-    <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@bocanada" />
     <meta name="twitter:creator" content="@{username}" />
     <meta name="twitter:description" content={text} />
