@@ -32,6 +32,8 @@
     <meta name="og:description" content={text} />
     <meta name="og:image" content={allMedia[0].preview_image_url} />
     <meta name="og:url" content={$page.url.toString()} />
+
+    <meta name="article:published_time" content={createdDate.toISOString()} />
 </svelte:head>
 
 <div class="flex">
