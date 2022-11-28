@@ -12,7 +12,7 @@ type Payload = {
 export const POST: RequestHandler = async ({ fetch, request, setHeaders }) => {
     const { tweetId } = await request.json() as Payload;
     if (!tweetId) {
-        return json({ "error": "body is empty" }, { status: 400 });
+        throw error(400, "body is empty");
     }
 
     const url = makeAPIUrl(tweetId);
