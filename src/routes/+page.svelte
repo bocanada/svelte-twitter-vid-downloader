@@ -17,6 +17,8 @@
         form?.message !== undefined ||
         (form?.media === undefined ? null : false);
 
+    $: console.log('all', allMedia);
+    $: console.log('media', form?.media);
     let loading = false;
 </script>
 

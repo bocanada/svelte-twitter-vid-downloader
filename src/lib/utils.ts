@@ -2,7 +2,7 @@ import { API_URL_TEMPLATE, type MediaMaxVariant, type Tweet, type TweetId } from
 
 export const toNumber = (t: any): Number => {
     const n = Number(t);
-    return isNaN(n) ? 0 : n;
+    return isNaN(n) ? -1 : n;
 }
 
 export const makeAPIUrl = (id: TweetId) => {

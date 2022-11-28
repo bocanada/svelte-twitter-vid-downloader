@@ -14,7 +14,7 @@
             <summary aria-haspopup="listbox">Bitrates</summary>
             <ul role="listbox">
                 {#each media.variants as variant}
-                    {#if variant.bit_rate}
+                    {#if variant.bit_rate !== -1}
                         <li>
                             <a href={variant.url}>
                                 {variant.bit_rate}
