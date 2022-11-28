@@ -1,0 +1,15 @@
+<main class="container main">
+    <slot />
+</main>
+
+<style>
+    .main {
+        min-height: 100vh;
+        padding: 4rem 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
