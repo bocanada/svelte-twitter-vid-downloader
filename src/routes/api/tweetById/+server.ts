@@ -43,7 +43,7 @@ export const POST: RequestHandler = async ({ fetch, request, setHeaders }) => {
             throw error(500, err.detail);
         }
     }
-    if (!media) {
+    if (!media || !data) {
         throw error(400, "Tweet includes no videos");
     }
 

@@ -8,7 +8,7 @@ type Payload = {
 type Response = Tweet | ValidationError<{ message?: string }>;
 
 export const actions: Actions = {
-    getTweet: async ({ fetch, request, setHeaders }): Promise<Response> => {
+    getTweet: async ({ fetch, setHeaders, request }): Promise<Response> => {
         const formData = Object.fromEntries(await request.formData()) as Payload;
 
         // Cache the response

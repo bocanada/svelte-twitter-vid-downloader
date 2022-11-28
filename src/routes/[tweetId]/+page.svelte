@@ -2,6 +2,7 @@
     import type { PageData } from "./$types";
     import { transformTweet } from "$lib/utils";
     import VideoCard from "$lib/components/VideoCard.svelte";
+    import { page } from "$app/stores";
 
     export let data: PageData;
 
@@ -13,6 +14,23 @@
 
 <svelte:head>
     <title>@{username} - {text.substring(0, 10)}...</title>
+    <meta name="description" content={text} />
+    <!-- Twitter Card Data -->
+    <meta
+        name="twitter:title"
+        content="@{username} - {text.substring(0, 10)}"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@bocanada" />
+    <meta name="twitter:creator" content="@{username}" />
+    <meta name="twitter:description" content={text} />
+    <meta name="twitter:image" content={allMedia[0].preview_image_url} />
+
+    <!-- Open Graph Data -->
+    <meta name="og:title" content="@{username} - {text.substring(0, 10)}" />
+    <meta name="og:description" content={text} />
+    <meta name="og:image" content={allMedia[0].preview_image_url} />
+    <meta name="og:url" content={$page.url.toString()} />
 </svelte:head>
 
 <div class="flex">

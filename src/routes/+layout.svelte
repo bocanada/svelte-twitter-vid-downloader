@@ -1,3 +1,9 @@
+<svelte:head>
+    <!-- Open Graph Data -->
+    <meta name="og:type" content="article" />
+    <meta name="og:site_name" content="Twitter Video Downloader" />
+</svelte:head>
+
 <main class="container main">
     <slot />
 </main>
